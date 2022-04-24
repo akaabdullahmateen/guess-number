@@ -223,10 +223,14 @@ a[href^="http"]::after {
   height: 1em;
   margin-left: 0.3em;
   mask-image: url("images/external-link.svg");
+  -webkit-mask-image: url("images/external-link.svg");
   background-color: var(--rgb-inactive);
   mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   mask-size: 0.7em;
+  -webkit-mask-size: 0.7em;
   mask-position: bottom 0px left 2px;
+  -webkit-mask-position: bottom 0px left 2px;
 }
 
 a[href^="http"]:hover::after {
