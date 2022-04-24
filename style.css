@@ -273,8 +273,10 @@ samp {
   border-radius: 0.25rem;
 }
 
+.snippet code *::selection,
 .snippet code::selection {
-  background-color: var(--rgb-currentline);
+  color: var(--rgb-foreground);
+  background-color: var(--rgb-currentline) !important;
 }
 
 pre code {
