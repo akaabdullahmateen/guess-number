@@ -1,0 +1,1 @@
+guessSubmit.addEventListener("click", checkGuess);

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="styles/github-dark.css" type="text/css" />
+    <script src="scripts/highlight.min.js"></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header class="primary-header">
+      <h1>Guess the <span class="green">number</span></h1>
+    </header>
+    <div class="root">
+      <aside class="sidebar">
+        <section>
+          <header>
+            <h2>
+              <a href="#">Guess the <span class="green">number</span></a>
+            </h2>
+            <p>A small web based game to practice JavaScript skills.</p>
+          </header>
+          <ul class="sidebar-nav">
+            <li>
+              <a href="#home">Play the game</a>
+            </li>
+            <li>
+              <a href="#brief">Brief</a>
+            </li>
+            <li>
+              <a href="#variables">Variables</a>
+            </li>
+            <li>
+              <a href="#functions">Functions</a>
+            </li>
+            <li>
+              <a href="#operators">Operators</a>
+            </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
+            <li>
+              <a href="#events">Events</a>
+            </li>
+            <li>
+              <a href="#finishing">Finishing</a>
+            </li>
+            <li>
+              <a href="#loops">Loops</a>
+            </li>
+            <li>
+              <a href="#objects">Objects</a>
+            </li>
+          </ul>
+        </section>
+      </aside>
+      <main class="content">
+        <section id="home">
+          <div class="notice">
+            <span>!</span>
+            <p></p>
+          </div>
+          <div class="popup-win">
+            <h2>Congratulations</h2>
+            <img src="images/trophy.png" alt="trophy" />
+            <p></p>
+            <button class="reset-button">Play again?</button>
+          </div>
+          <div class="popup-lose">
+            <h2>GAME OVER</h2>
+            <p>Your score: 40</p>
+            <button class="reset-button">Play again?</button>
+          </div>
+          <h2>Play the game</h2>
+          <p>
+            We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess
+            was too high or too low.
+          </p>
+          <fieldset>
+            <label for="guessField">Enter a guess:</label>
+            <input type="text" id="guessField" class="guessField" />
+            <input type="submit" value="Check" class="guessSubmit" />
+          </fieldset>
+          <div class="lives">
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+            <div class="life">
+              <img src="images/red-heart.png" alt="heart image as used in retro style games to display a single life" />
+              <p></p>
+            </div>
+          </div>
+        </section>
+        <section id="brief">
+          <h2>
+            <a href="#brief" title="Permalink to Brief - Guess the number">Brief</a>
+          </h2>
+          <p>
+            Create a simple guess the number type game. It should choose a random number between 1 and 100, then challenge the player to
+            guess the number in 10 turns. After each turn, the player should be told if they got it right or wrong, and if they are wrong,
+            whether the guess was too low or too high. It should also tell the player what number numbers they previously guessed. The game
+            will end once the player guesses correctly, or once they run out of turns. When the game ends, the player should be given an
+            option to start playing again.
+          </p>
+          <p>
+            Upon looking on this brief, the first thing we can do is to start breaking it down into simple actionable tasks, in as much of a
+            programmer mindset as possible:
+          </p>
+          <ol>
+            <li>Generate a random number between 1 and 100</li>
+            <li>Record the turn number the player is on. Start it on 1.</li>
+            <li>Provide the player with a way to guess what the number is.</li>
+            <li>Once the guess has been submitted first record it somewhere so the user can see their previous guesses.</li>
+            <li>Next, check whether it is the correct number.</li>
+            <li>
+              If it is correct:
+              <ol>
+                <li>Display the congratulations message.</li>
+                <li>Stop the player from being able to enter more guesses (this would mess the game up).</li>
+                <li>Display control allowing the player to restart the game.</li>
+              </ol>
+            </li>
+            <li>
+              If it is wrong and the player has turns left:
+              <ol>
+                <li>Tell the player they are wrong and whether the guess was too high or too low.</li>
+                <li>Allow them to enter another guess.</li>
+                <li>Increment the turn number by 1.</li>
+              </ol>
+            </li>
+            <li>
+              If it is wrong and the player has no more turns left:
+              <ol>
+                <li>Tell the player it is game over.</li>
+                <li>Stop the player from being able to enter any more guesses (this would mess the game up).</li>
+                <li>Display control allowing the player to restart the game.</li>
+              </ol>
+            </li>
+            <li>Once the game restarts, make sure the game logic and UI are completely reset, then go back to step 1.</li>
+          </ol>
+        </section>
+        <section id="variables">
+          <h2>
+            <a href="#variables" title="Permalink to Variables">Variables</a>
+          </h2>
+          <p>Let's get started. First of all, add the following lines inside our <code>&lt;script&gt;</code> element</p>
+          <div class="snippet"><p>variables-1.js</p></div>
+          <p>This section of the code sets up the variables and constants we need to store the data our program will use.</p>
+          <p>
+            Variables are basically names for values (such as numbers, strings of text). You can create a variable with the keyword
+            <code>&lt;let&gt;</code> followed by a name for your variable.
+          </p>
+          <p>
+            Constants are also used to name values, but unlike variables, you can't change the value once set. In this case we are using
+            constants to store references to parts of user interface. The text inside some of these elements might change, but each constant
+            always references the same HTML element that it was initialized with. You can create a constant with the keyword
+            <code>&lt;const&gt;</code> followed by a name for the constant.
+          </p>
+          <p>
+            You can assign a value to your variable or constant with an equals sign (<code>=</code>) followed by the value you want to give.
+          </p>
+          <p>In our example:</p>
+          <ul>
+            <li>
+              The first variable — <code>randomNumber</code> — is assigned a random number between 1 and 100, calculated using a
+              mathematical algorithm.
+            </li>
+            <li>
+              The first three constants are each made to store a reference to the results paragraphs in our HTML, and are used to insert
+              values into the paragraphs later on in the code (note how they are inside a <code>&lt;div&gt;</code> element, which is itself
+              used to select all three later on for resetting, when we restart the game):
+              <div class="snippet"><p>variables-2.html</p></div>
+            </li>
+            <li>
+              The next two constants store references to the form input and submit button and are used to control submitting the guess later
+              on.
+              <div class="snippet"><p>variables-3.html</p></div>
+            </li>
+            <li>
+              Our final two variables store a guess count of 1(used to keep track of how many guesses the player has had), and a reference
+              to a reset button that doesn't exist yet (but will later).
+            </li>
+          </ul>
+        </section>
+        <section id="functions">
+          <h2><a href="#functions" title="Permalink to Functions">Functions</a></h2>
+          <p>Next add the following below your JavaScript</p>
+          <div class="snippet"><p>functions-1.js</p></div>
+          <p>
+            Functions are reusable blocks of code that you can write once and run again and again, saving the need to keep repeating code
+            all the time. This is really useful. There are a number of ways to define functions, but for now we'll concentrate on one simple
+            type. Here we have defined a function by using the keyword <code>function</code>, followed by a name, with parenthesis put after
+            it. After that we put two curly braces (<code>{}</code>). Inside the curly braces goes all the code that we want to run whenever
+            we call the function.
+          </p>
+          <p>When we want to run the code, we type the name of the function followed by the parenthesis.</p>
+          <p>
+            Let's try that now. Save your code and refresh the page in your browser. Then go into the
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools" target="_blank">
+              developer tools JavaScript console </a
+            >, and enter the following line:
+          </p>
+          <div class="snippet"><p>functions-2.js</p></div>
+          <p>
+            After pressing <kbd>Return</kbd>/<kbd>Enter</kbd>, you should see an alert come up that says <samp>I am a placeholder</samp>; we
+            have defined a function in our code that creates an alert whenever we call it.
+          </p>
+        </section>
+        <section id="operators">
+          <h2><a href="#operators" title="Permalink to Operators">Operators</a></h2>
+          <p>JavaScript operators allows us to perform tests, do math, join strings together, and other such things.</p>
+          <p>
+            If you haven't already done so, save your code, refresh the page in your browser, and open the
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools" target="_blank"
+              >developer tools JavaScript console</a
+            >. Then we can try typing in the examples shown below — type each one from the "Example" columns exactly as shown, pressing
+            <kdb>Return</kdb>/<kdb>Enter</kdb> after each one, and see what results they return.
+          </p>
+          <p>First let's look at arithmetic operators, for example:</p>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Operator</th>
+                <th scope="col">Name</th>
+                <th scope="col">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>+</code></td>
+                <td>Addition</td>
+                <td><code>6 + 9</code></td>
+              </tr>
+              <tr>
+                <td><code>-</code></td>
+                <td>Subtraction</td>
+                <td><code>20 - 15</code></td>
+              </tr>
+              <tr>
+                <td><code>*</code></td>
+                <td>Multiplication</td>
+                <td><code>3 * 7</code></td>
+              </tr>
+              <tr>
+                <td><code>/</code></td>
+                <td>Division</td>
+                <td><code>10 / 5</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            You can also use the <code>+</code> operator to join text strings together (in programming, this is called
+            <em>concatenation</em>). Try entering the following lines, one at a time:
+          </p>
+          <div class="snippet"><p>operators-1.js</p></div>
+          <p>
+            There are also some shortcut operators available, called augmented
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#assignment_operators"
+              >assignment operators</a
+            >. For example, if you want to add a new text string to an existing string and return the result, you could do this:
+          </p>
+          <div class="snippet"><p>operators-2.js</p></div>
+          <p>This is equivalent to:</p>
+          <div class="snippet"><p>operators-3.js</p></div>
+          <p>
+            When we are running true/false tests (for example inside conditions) we use
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators">conditional operators</a>. For example:
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>===</code></td>
+                <td>Strict equality (is it exactly the same?)</td>
+                <td>
+                  <div class="snippet"><p>operators-4.js</p></div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>!==</code></td>
+                <td>Non-equality (is it not the same?)</td>
+                <td>
+                  <div class="snippet"><p>operators-5.js</p></div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>&lt;</code></td>
+                <td>Less than</td>
+                <td>
+                  <div class="snippet"><p>operators-6.js</p></div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>&gt;</code></td>
+                <td>Greater than</td>
+                <td>
+                  <div class="snippet"><p>operators-7.js</p></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section id="conditionals">
+          <h2><a href="#conditionals" title="Permalink to Conditionals">Conditionals</a></h2>
+          <p>
+            Returning to our <code>checkGuess()</code> function, I think it's safe to say that we don't want it to just spit out placeholder
+            message. We want it to check whether a player's guess is correct or not, and respond appropriately.
+          </p>
+          <p>At this point, replace your <code>checkGuess()</code> function with this version instead:</p>
+          <div class="snippet"><p>conditionals-1.js</p></div>
+          <p>This is a lot of code — phew! Let's go through each section and explain what it does.</p>
+          <ul>
+            <li>
+              The first line declares a variable called <code>userGuess</code> and sets its value to the current value entered inside the
+              text field. We also run this value through the built-in <code>Number</code> constructor, just to make sure the value is
+              definitely a number. Since we're not changing this variable, we'll declare it using <code>const</code>.
+            </li>
+            <li>
+              Next, we encounter our first conditional code block. A conditional code block allows you to run code selectively, depending on
+              whether a certain condition is true or not. It looks a bit like a function, but it isn't. The simplest form of conditional
+              block starts with the keyword <code>if</code>, then some parenthesis, then some curly braces. Inside the parenthesis we
+              include a test. If the test returns <code>true</code>, we run the code inside the curly braces. If not, we don't and move on
+              to the next bit of code. In this case the test is testing whether the <code>guessCount</code> variable is equal to
+              <code>1</code> (i.e. whether this is the player's first go or not):
+              <div class="snippet"><p>conditionals-2.js</p></div>
+              If it is, we make the guesses paragraph's text content equal to <code>Previous guesses:</code>. If not, we don't.
+            </li>
+            <li>
+              Line 6 appends the current <code>userGuess</code> value onto the end of <code>guesses</code> paragraph, plus a blank space so
+              there will be a space between each guess shown.
+            </li>
+            <li>
+              The next block does a few checks:
+              <ul>
+                <li>
+                  The first <code>if(){ }</code> checks whether the user's guess is equal to the <code>randomNumber</code> set at the top of
+                  our JavaScript. If it is, the player has guessed correctly and the game is won, so we show the player a congratulations
+                  message with a nice green color, clear the contents of the Low/High guess information box, and run a function called
+                  <code>setGameOver()</code>, which we'll discuss later.
+                </li>
+                <li>
+                  Now we've chained another test onto the end of the last one using an <code>else if(){ }</code> structure. This one checks
+                  whether this turn is the user's last turn. If it is, the program does the same thing as in the previous block, except with
+                  the game over message instead of the congratulations message.
+                </li>
+                <li>
+                  The final block chained onto the end of this code (the <code>else { }</code>) contains code that is only run if neither of
+                  the other two tests returns true (i.e. the player didn't guess right, but they have more guesses left). In this case we
+                  tell them they are wrong, then we perform another conditional test to check whether the guess was higher or lower than the
+                  answer, displaying a further message as appropriate to tell them higher or lower.
+                </li>
+              </ul>
+            </li>
+            <li>
+              The last three lines in the function (lines 26-28 above) get us ready for the next guess to be submitted. We add 1 to the
+              <code>guessCount</code> variable so the player uses up their turn (<code>++</code> is an incremental operation — increment by
+              1), and empty the value out of the form text field and focus it again, ready for the next guess to be entered.
+            </li>
+          </ul>
+        </section>
+        <section id="events">
+          <h2><a href="#events" title="Permalink to Events">Events</a></h2>
+          <p>
+            At this point, we have a nicely implemented <code>checkGuess()</code> function, but it won't do anything because we haven't
+            called it yet. Ideally, we want to call it when the "Check" button is pressed, and to do that we need to use an
+            <strong>event</strong>. Events are things that happen in the browser — a button being clicked, a page loading, a video playing,
+            etc. — in response to which we can run blocks of code. <strong>Event listeners</strong> observe specific events and call
+            <strong>event handlers</strong>, which are blocks of code that run in response to an event firing.
+          </p>
+          <p>Add the following line below your <code>checkGuess()</code> function:</p>
+          <div class="snippet"><p>events-1.js</p></div>
+          <p>
+            Here we are adding an event listener to the <code>guessSubmit</code> button. This is a method that takes two input values
+            (called arguments) — the type of event we are listening out for (in this case <code>click</code>) as a string, and the code we
+            want to run when the event occurs (in this case the <code>checkGuess()</code> function). Note that we don't need to specify the
+            parenthesis when writing inside
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code>addEventListener()</code></a
+            >.
+          </p>
+          <p>
+            Try saving and refreshing your code now, your example should work — to a point. The only problem now is that if you guess the
+            correct answer or run out of guesses, the game will break because we've not yet defined the
+            <code>setGameOver()</code> function that is supposed to be run once the game is over. Let's add our missing code now and
+            complete the example functionality.
+          </p>
+        </section>
+        <section id="finishing">
+          <h2><a href="#finishing" title="Permalink to Finishing">Finishing</a></h2>
+          <p>
+            Let's add that <code>setGameOver()</code> function to the bottom of our code and then walk through it. Add this now, below the
+            rest of your JavaScript.
+          </p>
+          <div class="snippet"><p>finishing-1.js</p></div>
+          <ul>
+            <li>
+              The first two lines disable the text input and button by setting their disabled properties to <code>true</code>. This is
+              necessary, because if we didn't, the user could submit more guesses after the game is over, which would mess things up.
+            </li>
+            <li>
+              The next three lines generate a new <code>&lt;button&gt;</code> element, set its text label to "Start new game", and add it to
+              the bottom of our existing HTML.
+            </li>
+            <li>
+              The final line sets an event listener on our new button so that when it is clicked, a function called
+              <code>resetGame()</code> is run.
+            </li>
+          </ul>
+          <p>Now we need to define this function too! Add the following code, again to the bottom of your JavaScript:</p>
+          <div class="snippet"><p>finishing-2.js</p></div>
+          <p>
+            This rather long block of code completely resets everything to how it was at the start of the game, so the player can have
+            another go. It:
+          </p>
+          <ul>
+            <li>Puts the <code>guessCount</code> back down to 1.</li>
+            <li>
+              Empties all the text out of the information paragraphs. We select all paragraphs inside
+              <code>&lt;div class="resultParas&gt&lt;/div&gt;</code>, then loop through each one, setting their <code>textContent</code> to
+              <code>""</code> (empty string).
+            </li>
+            <li>Removes the reset button from our code.</li>
+            <li>Enables the form element, and empties and focuses the text field, ready for a new guess to be entered.</li>
+            <li>Removes the background color from the <code>lastResult</code> paragraph.</li>
+            <li>Generates a new random number so that you are not just guessing the same number again!</li>
+          </ul>
+          <p><strong>At this point you should have a fully working (simple) game — congratulations!</strong></p>
+          <p>
+            All we have to do now in this article is to talk about a few other important code features that you've already seen, although
+            you may have not realized it.
+          </p>
+        </section>
+        <section id="loops">
+          <h2><a href="#loops" title="Permalink to Loops">Loops</a></h2>
+          <p>
+            One part of the above code that we need to take a more detailed look at is the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of"><code>for...of</code></a>
+            loop. Loops are a very important concept in programming, which allow you to keep running a piece of code over and over again,
+            until a certain condition is met.
+          </p>
+          <p>
+            To start with, go to your
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools"
+              >browser developer tools JavaScript console</a
+            >
+            again, and enter the following:
+          </p>
+          <div class="snippet"><p>loops-1.js</p></div>
+          <p>What happened? The strings <code>"apples", "bananas", "cherries"</code> were printed out in your console.</p>
+          <p>
+            This is because of the loop. The line <code>const fruits = ["apples", "bananas", "cherries"];</code> creates an array. We will
+            work through
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays">a complete Arrays guide</a> later in this
+            module, but for now: an array is a collection of items (in this case string).
+          </p>
+          <p>
+            A <code>for...of</code> loop gives you a way to get each item in the array and run some JavaScript on it. The line
+            <code>for (const fruit of fruits)</code> says:
+          </p>
+          <ol>
+            <li>Get the first item in <code>fruits</code></li>
+            <li>Set the <code>fruit</code> variable to that item, then run the code between the <code>{}</code> brackets.</li>
+            <li>Get the next item in <code>fruits</code>, and repeat 2, until you reach the end of <code>fruits</code>.</li>
+          </ol>
+          <p>In this case the code inside the brackets is writing our <code>fruit</code> to the console.</p>
+          <p>
+            Now let's look at the loop in our number guessing game — the follwing can be found inside the
+            <code>resetGame()</code> function:
+          </p>
+          <div class="snippet"><p>loops-2.js</p></div>
+          <p>
+            This code creates a variable containing a list of all the paragraphs inside <code>&lt;div class="resultParas"&gt;</code> using
+            the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"><code>querySelectorAll()</code></a>
+            method, then it loops through each one, removing the text content of each.
+          </p>
+          <p>
+            Note that even through <code>resetParas</code> is a constant, we can change its internal properties like
+            <code>textContent</code>.
+          </p>
+        </section>
+        <section id="objects">
+          <h2><a href="#objects" title="Permalink to Objects">Objects</a></h2>
+          <p>
+            Let's add one more final improvement before we get to this discussion. Add the following line just below the
+            <code>let resetButton;</code> line near the top of your JavaScript, then save your file:
+          </p>
+          <div class="snippet"><p>objects-1.js</p></div>
+          <p>
+            This line uses the <code>focus()</code> method to automatically put the text cursor into the <code>&lt;input&gt;</code> text
+            field as soon as the page loads, meaning that the user can start typing their first guess right away, without having to click
+            the form field first. It's only a small addition, but it improves usability — giving the user a good visual clue as to what
+            they've got to do to play the game.
+          </p>
+          <p>
+            Let's analyze what's going on here in a bit more detail. In JavaScript, most of the items you will manipulate in your code are
+            objects. An object is a collection of related functionality stored in a single grouping. You can create your own objects, but
+            this is quite advanced and we won't be covering it until much later in this course. For now, we'll just briefly describe the
+            built-in objects that your browsers contains, which allows you to do lots of useful things.
+          </p>
+          <p>
+            In this particular case, we first created a <code>guessField</code> constant that stores a reference to the text input form
+            field in our HTML — the following line can be found amongst our declarations near the top of the code:
+          </p>
+          <div class="snippet"><p>objects-2.js</p></div>
+          <p>
+            To get this reference, we used the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"><code>querySelector()</code></a> method of the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document"><code>document</code></a> object.
+            <code>querySelector()</code> takes one piece of information — a
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selector</a> that selects the element
+            you want a reference to.
+          </p>
+          <p>
+            Because <code>guessField</code> now contains a reference to an <code>&lt;input&gt;</code> element, it now has access to a number
+            of properties (basically variables stored inside objects, some of which can't have their values changed) and methods (basically
+            functions stored inside objects). One method available to input element is <code>focus()</code>, so we can now use this line to
+            focus the text input:
+          </p>
+          <p>
+            Variables that don't contain references to form elements won't have <code>focus()</code> available to them. For example, the
+            <code>guesses</code> constant contains a reference to a
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p"><code>p</code></a> element, and the
+            <code>guessCount</code> variable contains a number.
+          </p>
+        </section>
+      </main>
+    </div>
+    <footer></footer>
+  </body>
+</html>

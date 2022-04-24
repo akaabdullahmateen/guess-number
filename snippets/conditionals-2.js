@@ -1,0 +1,1 @@
+guessCount === 1;
